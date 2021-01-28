@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.mauriciogoulart.workshopmongodb.domain.User;
 import com.mauriciogoulart.workshopmongodb.dto.UserDTO;
 import com.mauriciogoulart.workshopmongodb.repository.UserRepository;
-import com.mauriciogoulart.workshopmongodb.services.exception.ObjectNotFindException;
+import com.mauriciogoulart.workshopmongodb.services.exception.ObjectNotFoundException;
 
 
 @Service //diz para o Spring que essa classe é um serviço.
@@ -26,7 +26,7 @@ public class UserService {
 	
 	public User findById(String id) {
 		Optional<User> obj = repo.findById(id);
-		return obj.orElseThrow(() -> new ObjectNotFindException("Objeto não encontrado"));
+		return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
 		}
 	
 	public User insert(User obj) {
